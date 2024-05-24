@@ -17,11 +17,13 @@ class Sockets {
         this.io.on('connection', (socket) => {
 
             console.log('cliente conectado')
+           
 
             socket.on('solicitar-ticket', (data, callback)=>{
                 const nuevoTicket = this.ticketList.crearTicket()
                 callback(nuevoTicket)
-               
+           
+               console.log(nuevoTicket,data)
             })
 
             socket.on('siguiente-ticket', ({agente,escritorio}, callback)=>{

@@ -19,7 +19,11 @@ class Server{
 
     }
     middlewares(){
-        this.app.use(cors())
+        var corsOptions = {
+            origin: 'http://localhost:5173',
+            optionsSuccessStatus: 200
+          }
+        this.app.use(cors(corsOptions))
 
         this.app.get("/ultimos", (req, res) => {
 
