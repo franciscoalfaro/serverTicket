@@ -11,7 +11,9 @@ class Server{
         this.port = 3000
         this.server = http.createServer(this.app);
         
-        this.io = socketio(this.server)
+        this.io = socketio(this.server, {
+            path: '/serverTicket/socket.io'
+        });
 
 
         //inicializar socket
@@ -19,10 +21,11 @@ class Server{
 
     }
     middlewares(){
-        var corsOptions = {
-            origin: 'http://localhost:5173',
+        const corsOptions = {
+            origin: ['http://localhost:5173', 'https://franalfaro.ddns.net'],
             optionsSuccessStatus: 200
-          }
+        };
+        
         this.app.use(cors(corsOptions))
 
         this.app.get("/ultimos", (req, res) => {
