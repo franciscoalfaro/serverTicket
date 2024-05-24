@@ -12,7 +12,7 @@ class Server{
         this.server = http.createServer(this.app);
         
         this.io = socketio(this.server, {
-            path: '/serverTicket/socket.io'
+            path: '/socket.io'
         });
 
 
