@@ -12,7 +12,14 @@ class Server{
         this.server = http.createServer(this.app);
         
         this.io = socketio(this.server, {
-            path: '/socket.io'
+            path: '/serverTicket/socket.io',
+            wssEngine: ['ws', 'wss'],
+            transports: ['websocket', 'polling'],
+            cors: {
+                origin: "*",
+                allowedHeaders: ["Content-Disposition"],
+                credentials: true
+            }
         });
 
 
